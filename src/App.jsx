@@ -7,13 +7,9 @@ function App() {
   const excludedCategories = ["electronics", "string", "miscellaneous"];
 
   useEffect(() => {
-    axios.get('https://api.escuelajs.co/api/v1/products')
+    axios.get('https://fakestoreapi.in/api/products')
     .then(response => {
-      const filteredProducts = response.data.filter(product => 
-          product.category?.name && 
-          !excludedCategories.includes(product.category.name.toLowerCase())
-        );
-        setProducts(filteredProducts);
+      setProducts(response.data.products);
     })
     .catch(error => {
       console.error(error);
@@ -26,14 +22,14 @@ function App() {
         {products.map(product => (
             <div key={product.id} className="hover:scale-102 transition-transform duration-300 ease-in-out isolate relative border-solid border-black border-1 p-1 rounded-lg relative mb-8">
                 <img className="rounded" 
-                  src={product?.images?.[0] || "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM="} 
+                  src={product.image} 
                   alt={product.name} 
                   onError={(e) => {
                     e.target.onerror = null; // Prevents infinite loop if fallback also fails
                     e.target.src = "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM=";
                   }}
                   />
-              <h2 class="my-4 text-2xl">{product.title} - ${product.price}</h2>
+              <h2 className="my-4 text-2xl">{product.title} - ${product.price}</h2>
               <p>{product.description}</p>
               <p className="">{product.category.name}</p>
             </div>
