@@ -2,10 +2,10 @@
     overflow: hidden;
 }
 .product img{
-    max-height: 190px;
+    max-height: 150px;
 }
 .image-parent{
-    min-height: 256px;
+    min-height: 216px;
     display: flex;
     align-items: center;
 }
@@ -17,4 +17,7 @@
 
 .product:hover .icon-parent{
     transform: translateX(0);
+}
+.right-caret:hover i{
+    @apply hover:translate-x-1 transition-transform duration-300;
 }
