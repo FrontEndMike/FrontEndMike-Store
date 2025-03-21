@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+.main-header{
+    @apply px-4 bg-white shadow-md fixed top-0 left-0 w-full z-50  transition-all duration-300 ease-in-out;
+}
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  padding: 10px;
+  background-color: #000;
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  clip: rect(1px, 1px, 1px, 1px); /* Makes the link invisible off-screen */
+  overflow: hidden;
+}
+
+.skip-link:focus {
+  width: auto;
+  height: auto;
+  clip: auto; /* Makes the link visible when focused */
+  position: static;
+}
+
+.full-header img{
+    max-height: 70px;
+    width: auto;
+    @apply transition-all duration-300 ease-in-out;
+}
+
+#content{
+    scroll-padding-top: 140px;
+}
+
+.cart{
+    padding: 0;
+    height: 15px;
+    width: 46px;
+    margin-bottom: 12px;
+    @apply transition-all duration-300 ease-in-out;
+}
+
+.cart::before {
+  content: "\f07a"; 
+  font-family: "Font Awesome 5 Free"; 
+  font-weight: 900; 
+    position: absolute;
+    left: 0;
+    top: -14px;
+    font-size: 2.5rem;
+    @apply transition-all duration-300 ease-in-out;
+}
+
+
+
+.small-header img{
+    max-height: 50px;
+    @apply transition-all duration-300 ease-in-out;
+}
+.small-header  .cart::before {
+    content: "\f07a";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    top: -11px;
+    font-size: 2.12rem;
+    @apply transition-all duration-300 ease-in-out;
+}
+
+.small-header .cart{
+    width: 40px;
+}

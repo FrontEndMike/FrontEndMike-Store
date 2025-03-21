@@ -1,0 +1,20 @@
+.product{
+    overflow: hidden;
+}
+.product img{
+    max-height: 190px;
+}
+.image-parent{
+    min-height: 256px;
+    display: flex;
+    align-items: center;
+}
+.icon-parent{
+    right: 1rem;
+    transform: translateX(80px);
+      @apply absolute top-0 duration-300 ease-in-out;
+}
+
+.product:hover .icon-parent{
+    transform: translateX(0);
+}
