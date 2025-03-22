@@ -7,7 +7,7 @@ const ProductRow = ({ category, products, addToCart }) => {
       <div id="{category}" className="container px-4 mb-4">
         <div className="flex justify-between items-center">
             <h2 className="text-2xl capitalize mb-2">{category}</h2>
-            <a className="right-caret group" href="">View All <i class="transition-transform duration-300 group-hover:translate-x-1  fa-solid fa-chevron-right"></i></a>
+            <a className="right-caret group" href="">View All <i className="transition-transform duration-300 group-hover:translate-x-1  fa-solid fa-chevron-right"></i></a>
         </div>
         <div className="gap-6 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
         {products.map((product) => (
@@ -25,7 +25,7 @@ const ProductRow = ({ category, products, addToCart }) => {
               <h3 className="my-1 text-lg/5">{product.title}</h3>
               <p className="capitalize text-sm">{product.category}</p>
               {/* <p>{product.description}</p> */}
-              <p>${product.price}</p>
+              <p>${product.price.toFixed(2)}</p>
               
             </div>
         ))}
