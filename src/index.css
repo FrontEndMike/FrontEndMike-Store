@@ -1,23 +1,20 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Playfair+Display:ital@0;1&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:opsz,wght@18..144,300&family=Montserrat:wght@300&display=swap');
 
-/* h1,h2,h3{
-  font-family: "Playfair Display", serif;
-} */
 h1,h2,h3{
-  font-family: "Montserrat", sans-serif;
-  font-weight: 300;
+  font-family: "Merriweather", serif;
+  letter-spacing: 1px;
 }
+
 p{
   font-family: "Montserrat", sans-serif;
   font-weight: 300;
 }
 
 @theme {
-  --color-primary: #3F7DB1;
-  --color-secondary: #34366E;
+  --color-primary: #468189;
+  --color-secondary: #3B3B3B;
   --color-xanthous: #F2B823;
-  --color-tangerine: #EB8325;
+  --color-tangerine: #BAA086;
   --color-redish: #C82E33;
 }

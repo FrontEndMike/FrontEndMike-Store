@@ -21,7 +21,3 @@
 .right-caret:hover i{
     @apply hover:translate-x-1 transition-transform duration-300;
 }
-
-.cart-preview img{
-    max-width: 2.5rem;
-}
