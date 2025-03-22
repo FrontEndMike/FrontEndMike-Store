@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import storeLogo from "../assets/store-logo.png";
 
-const Navbar = ({ cart }) => {
+const Navbar = ({ totalItems }) => {
       window.addEventListener('scroll', () => {
         const headerContent = document.getElementById('header-content');
             if (window.scrollY > 10) {
@@ -11,24 +11,34 @@ const Navbar = ({ cart }) => {
                 headerContent.classList.remove('scroll');
             }
         });
+        const slideIn = () => {
+            const cartModal = document.getElementById("sidecart");
+            if(cartModal.classList.contains('slide-in')){
+                cartModal.classList.add('slide-out','right-0');
+                cartModal.classList.remove('slide-in','right-4');
+            } else {                
+                cartModal.classList.remove('slide-out', 'right-0');
+                cartModal.classList.add('slide-in','right-4');
+            }
+        }
 
         return(
             <>
             <header id="site-header" className="shadow fixed top-0 left-0 w-full bg-white z-50 transition-transform duration-300 origin-top">
                 <a href="#content" className="skip-link">Skip to Main Content</a>
-                <div id="header-content" className="max-w-[1280px] mx-auto flex items-center justify-between transition-transform duration-300 transform">
+                <div id="header-content" className="min-h-[55px] max-w-[1280px] mx-auto flex items-center justify-between transition-transform duration-300 transform">
                     <div>
                         <a href="/">
                             <img src={storeLogo} alt="" /> 
                         </a>
                     </div>
                     <div className="relative inline-block">
-                        <button className="cursor-pointer">
-                        <i className="fas fa-shopping-bag"></i>
-                        {cart.length > 0 && (
+                        <button className="cursor-pointer" onClick={() => slideIn()}>
+                        <i className="text-secondary fas fa-shopping-bag"></i>
+                        {totalItems > 0 && (
                         <span id="cart-count"
-                                className="absolute -bottom-1 -right-1 bg-red-600 text-white text-xs font-semibold rounded-full w-5 h-5 flex items-center justify-center">
-                            {cart.length}
+                                className="absolute -bottom-1 -right-1 bg-primary text-white text-xs font-semibold rounded-full w-5 h-5 flex items-center justify-center">
+                            {totalItems}
                         </span>
                         )}
                         </button>
