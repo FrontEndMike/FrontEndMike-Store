@@ -1,0 +1,21 @@
+.cart-preview img{
+    max-width: 2.5rem;
+}
+
+
+
+.slide-out{
+    @apply translate-x-full transition-transform duration-300;
+}
+
+
+.slide-in{
+     @apply translate-x-0 transition-transform duration-300;
+}
+
+@media screen and (max-width: 768px) {
+  .slide-in {
+    max-width: 90%;
+    right: 1rem;
+  }
+}
