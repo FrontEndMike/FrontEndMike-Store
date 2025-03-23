@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import axios from 'axios';
 import Navbar from './components/Navigation'
-import Hero from './components/Hero'
 import SideCart from './components/SideCart'
-import ProductRow from './components/ProductRow'
+import HomePage from './pages/Home'
+import ProductDetail from './pages/ProductDetail'
 import './App.css'
 
 function App() {
@@ -59,7 +60,6 @@ const totalPrice = cart.reduce((sum, item) => sum + item.price * item.quantity, 
   return (
     <>
     <Navbar totalItems={totalItems} />
-    <Hero />
     <SideCart 
       cart={cart} 
       totalItems={totalItems} 
@@ -67,25 +67,14 @@ const totalPrice = cart.reduce((sum, item) => sum + item.price * item.quantity, 
       totalPrice={totalPrice}
       removeFromCart={removeFromCart} 
     />
-    <div className="container max-w-[1280px] mx-auto my-8">
-    <div id="content">
-      <ProductRow 
-        category="men's clothing"
-        products={products.filter(p => p.category === "men's clothing").slice(0, 4)}
-        addToCart={addToCart}
-      />
-      <ProductRow 
-        category="womens's clothing"
-        products={products.filter(p => p.category === "women's clothing").slice(0, 4)}
-        addToCart={addToCart}
-      />
-      <ProductRow 
-        category="electronics"
-        products={products.filter(p => p.category === "electronics").slice(0, 4)}
-        addToCart={addToCart}
-      />
-    </div>
-    </div>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<HomePage products={products} addToCart={addToCart} />} />
+            <Route path="/product/:id" element={<ProductDetail products={products} addToCart={addToCart} />} />
+          </Routes>
+      </BrowserRouter>
+    
+
     </>
   )
 }
