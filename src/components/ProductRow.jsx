@@ -13,13 +13,13 @@ const ProductRow = ({ category, products, addToCart }) => {
             <div key={product.id} className="product relative relative mb-8">
               <div className="isolate relative image-parent p-4 rounded-lg border-solid border-primary justify-center ">
                 <Link className="text-center" to={`/product/${product.id}`}>
-                  <img className="rounded mx-auto" 
+                  <img className="rounded mx-auto max-w-[100px] sm:max-w-[200px]" 
                     src={product.image} 
                     alt={product.name} 
                     />
                 </Link>
               </div>
-              <div className="flex gap-1 icon-parent flex-col">
+              <div className="hidden sm:flex  gap-1 icon-parent flex-col">
                 <button className="w-auto cursor-pointer mt-2 px-4 py-2 bg-primary text-white rounded hover:brightness-90 transition duration-300" onClick={() => addToCart(product)}><i className="fa-solid fa-plus"></i></button>
                 <Link to={`/product/${product.id}`}>
                   <button className="w-auto cursor-pointer mt-2 px-4 py-2 bg-tangerine text-white rounded hover:brightness-90 transition duration-300">

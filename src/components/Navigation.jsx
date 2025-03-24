@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import storeLogo from "../assets/store-logo.png";
+import { Link } from 'react-router-dom';
 
 const Navbar = ({ totalItems }) => {
       window.addEventListener('scroll', () => {
@@ -28,21 +29,23 @@ const Navbar = ({ totalItems }) => {
                 <a href="#content" className="skip-link">Skip to Main Content</a>
                 <div id="header-content" className="min-h-[55px] max-w-[1280px] mx-auto flex items-center justify-between transition-transform duration-300 transform">
                     <div>
-                        <a href="/">
-                            <img src={storeLogo} alt="" /> 
-                        </a>
+                        <Link to="/">
+                            <i className="text-secondary fa-solid fa-shop"><span className="sr-only">Home</span></i>
+                        </Link>
                     </div>
-                    <div className="relative inline-block">
+
+                        <div className="relative inline-block flex gap-4">
                         <button className="cursor-pointer" onClick={() => slideIn()}>
-                        <i className="text-secondary fas fa-shopping-bag"></i>
-                        {totalItems > 0 && (
-                        <span id="cart-count"
-                                className="absolute -bottom-1 -right-1 bg-primary text-white text-xs font-semibold rounded-full w-5 h-5 flex items-center justify-center">
-                            {totalItems}
-                        </span>
-                        )}
+                            <i className="text-secondary fas fa-shopping-bag"><span className="sr-only">Shopping Bag</span></i>
+                            {totalItems > 0 && (
+                            <span id="cart-count"
+                                    className="absolute -bottom-1 -right-1 z-1 bg-primary text-white text-xs font-semibold rounded-full w-5 h-5 flex items-center justify-center">
+                                {totalItems}
+                            </span>
+                            )}
                         </button>
                     </div>
+
                 </div>
             </header>
 

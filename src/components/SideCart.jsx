@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 
 const SideCart = ({ cart, addToCart, removeFromCart, totalItems, totalPrice }) => {
     const slideOut = () => {
@@ -15,11 +16,15 @@ const SideCart = ({ cart, addToCart, removeFromCart, totalItems, totalPrice }) =
         {cart.map((product) => (
         <div key={product.id} className="grid grid-cols-5">
             <div className="col-span-1 cart-preview">
-                <img className="mx-auto" src={product.image} alt={product.title} />
+                <Link to={`/product/${product.id}`}>
+                    <img className="mx-auto" src={product.image} alt={product.title} />
+                </Link>
             </div>
             <div key={product.id} className="col-span-4 relative relative mb-8">
               <p className="my-1 text-secondary text-md md:text-lg/5">
-                  {product.title}
+                  <Link to={`/product/${product.id}`}>
+                    {product.title}
+                  </Link>
              </p>
              <div className="mt-3 flex justify-between items-center pl-2">
                 <p className="text-md">${product.price.toFixed(2)} 
@@ -38,7 +43,7 @@ const SideCart = ({ cart, addToCart, removeFromCart, totalItems, totalPrice }) =
         {totalPrice > 0 && (
             <p className="my-1 font-semibold">Total : ${totalPrice.toFixed(2)}</p>
         )}
-        <a href="#" className="mt-4 block p-4 text-center button bg-primary text-white rounded hover:brightness-90 transition duration-300">Checkout</a>
+        <Link to="/checkout/" onClick={() => slideOut()} className="mt-4 block p-4 text-center button bg-primary text-white rounded hover:brightness-90 transition duration-300">Checkout</Link>
         </div>
     )
 }
