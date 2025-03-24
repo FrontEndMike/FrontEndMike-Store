@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
+import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 
 import Navbar from './components/Navigation'
@@ -10,6 +11,7 @@ import Loader from './components/Loader'
 import HomePage from './pages/Home'
 import ProductDetail from './pages/ProductDetail'
 import CheckOut from './pages/Checkout'
+import NotFound from './pages/NotFound'
 
 import './App.css'
 
@@ -18,6 +20,16 @@ const CART_KEY = 'user-cart';
 const fetchProducts = async () => {
   const response = await axios.get('https://fakestoreapi.com/products');
   return response.data;
+};
+
+export const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
 };
 
 
@@ -82,6 +94,7 @@ function App() {
   return (
     <>
         <BrowserRouter>
+          <ScrollToTop /> 
           <Navbar totalItems={totalItems} />
           <SideCart 
             cart={cart} 
@@ -102,6 +115,7 @@ function App() {
                 removeFromCart={removeFromCart} 
               />} 
             />
+            <Route path="*" element={<NotFound />} />
           </Routes>
           <Footer />
       </BrowserRouter>

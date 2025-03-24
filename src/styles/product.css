@@ -1,9 +1,7 @@
 .product{
     overflow: hidden;
 }
-.product img{
-    max-height: 170px;
-}
+
 .image-parent{
     min-height: 216px;
     display: flex;
@@ -13,6 +11,16 @@
     right: 1rem;
     transform: translateX(80px);
       @apply absolute top-0 duration-300 ease-in-out;
+}
+
+@media screen and (max-width: 768px) {
+    .icon-parent{
+        position: relative;
+        right: auto;
+        transform: none;
+        top: auto;
+        flex-direction: row;
+    }
 }
 
 .product:hover .icon-parent{

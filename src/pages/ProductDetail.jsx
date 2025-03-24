@@ -16,7 +16,7 @@ const ProductDetail = ({ products, addToCart }) => {
 
   if (!product) return <>
     <Loader />
-    <p>No product found</p>
+    <p className="text-center mb-12">No product found</p>
   </>;
 
   return (
