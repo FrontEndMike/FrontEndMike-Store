@@ -3,22 +3,41 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import axios from 'axios';
 import Navbar from './components/Navigation'
 import SideCart from './components/SideCart'
+import Footer from './components/Footer'
+import Loader from './components/Loader'
 import HomePage from './pages/Home'
 import ProductDetail from './pages/ProductDetail'
+import CheckOut from './pages/Checkout'
 import './App.css'
 
 function App() {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
+  const cached = localStorage.getItem('cached-products');
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get('https://fakestoreapi.com/products')
-    .then(response => {
-      setProducts(response.data);
-    })
-    .catch(error => {
-      console.error(error);
-    });
+    if (cached) {
+      try{
+        setProducts(JSON.parse(cached));
+      } catch(err){
+        console.error('Invalid JSON:', err);
+        localStorage.removeItem('cached-products');
+      }
+      setLoading(false);
+    } else {
+      axios.get('https://fakestoreapi.com/products')
+      .then(response => {
+        const data = response.data
+        localStorage.setItem('cached-products', JSON.stringify(data));
+        setProducts(data);
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error('API Error:', error);
+        setLoading(false);
+      });
+    }
   }, []);
 
   const addToCart = (product) => {
@@ -56,22 +75,32 @@ const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
 const totalPrice = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
 
-
+  if (loading) return <>
+    <Loader />
+  </>;
   return (
     <>
-    <Navbar totalItems={totalItems} />
-    <SideCart 
-      cart={cart} 
-      totalItems={totalItems} 
-      addToCart={addToCart} 
-      totalPrice={totalPrice}
-      removeFromCart={removeFromCart} 
-    />
         <BrowserRouter>
+          <Navbar totalItems={totalItems} />
+          <SideCart 
+            cart={cart} 
+            totalItems={totalItems} 
+            addToCart={addToCart} 
+            totalPrice={totalPrice}
+            removeFromCart={removeFromCart} 
+          />
           <Routes>
             <Route path="/" element={<HomePage products={products} addToCart={addToCart} />} />
             <Route path="/product/:id" element={<ProductDetail products={products} addToCart={addToCart} />} />
+            <Route path="/checkout" element={<CheckOut 
+              cart={cart} 
+              totalItems={totalItems} 
+              addToCart={addToCart} 
+              totalPrice={totalPrice}
+              removeFromCart={removeFromCart} 
+            />} />
           </Routes>
+          <Footer />
       </BrowserRouter>
     
 
