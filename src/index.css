@@ -1,5 +1,5 @@
-@import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:opsz,wght@18..144,300&family=Montserrat:wght@300&display=swap');
+@import "tailwindcss";
 
 h1,h2,h3{
   font-family: "Merriweather", serif;

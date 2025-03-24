@@ -1,3 +1,4 @@
 .hero{
-    background-image: url('../assets/hero-image-1.png');
+    padding: 10.1rem 0;
+    @apply relative w-full flex items-center justify-start text-left bg-cover bg-center;
 }
