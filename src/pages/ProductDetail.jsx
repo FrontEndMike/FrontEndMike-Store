@@ -6,26 +6,17 @@ import Loader from '../components/Loader'
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
-const ProductDetail = ({ addToCart }) => {
+const ProductDetail = ({ products, addToCart }) => {
   const { id } = useParams();
-  const [product, setProduct] = useState(null);
+  const product = products.find((item) => item.id === parseInt(id));
     const headline = "Fashion Boutique";
     const subheadline = "React Store";
     const introText = "Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.";
 
 
-  useEffect(() => {
-    axios.get(`https://fakestoreapi.com/products/${id}`)
-    .then(response => {
-      setProduct(response.data);
-    })
-    .catch(error => {
-      console.error(error);
-    });
-  }, [id]);
-
   if (!product) return <>
     <Loader />
+    <p>No product found</p>
   </>;
 
   return (
