@@ -2,6 +2,7 @@ import React from "react";
 import axios from 'axios';
 import Hero from '../components/Hero'
 import heroImage from "../assets/home-hero.png";
+import Loader from '../components/Loader'
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
@@ -23,7 +24,9 @@ const ProductDetail = ({ addToCart }) => {
     });
   }, [id]);
 
-  if (!product) return <p className="text-center mt-12">No product found.</p>;
+  if (!product) return <>
+    <Loader />
+  </>;
 
   return (
     <>
@@ -33,7 +36,7 @@ const ProductDetail = ({ addToCart }) => {
             headline={headline}
             introText={introText} 
         />
-        <div className="container max-w-[1080px] mx-auto my-12 px-4">
+        <div className="container max-w-[1080px] mx-auto mt-20 mb-40 px-4">
         <div id="content">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
                 <div className="sm:col-span-1 text-center col-span-2 rounded-lg">

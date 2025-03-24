@@ -19,7 +19,7 @@ const HomePage = ({ products, addToCart }) => {
         <div className="container max-w-[1280px] mx-auto my-8 px-8">
             <div id="content">
             <ProductRow 
-                products={products.slice(0, 12)}
+                products={products}
                 addToCart={addToCart}
             />
             </div>
