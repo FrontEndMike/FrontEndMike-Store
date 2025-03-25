@@ -1,7 +1,7 @@
 import React from "react";
 import Hero from '../components/Hero'
 import ProductRow from '../components/ProductRow'
-import heroImage from "../assets/category-hero.png";
+import heroImage from "../assets/category-hero.webp";
 
 const HomePage = ({ products, addToCart }) => {
     const headline = "Fashion Boutique";
@@ -19,7 +19,7 @@ const HomePage = ({ products, addToCart }) => {
         <div className="container max-w-[1280px] mx-auto my-8 px-8">
             <div id="content">
             <ProductRow 
-                products={products}
+                products={products.slice(0, 12)}
                 addToCart={addToCart}
             />
             </div>

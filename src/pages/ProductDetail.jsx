@@ -1,7 +1,7 @@
 import React from "react";
 import axios from 'axios';
 import Hero from '../components/Hero'
-import heroImage from "../assets/home-hero.png";
+import heroImage from "../assets/home-hero.webp";
 import Loader from '../components/Loader'
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
@@ -34,7 +34,7 @@ const ProductDetail = ({ products, addToCart }) => {
                     <a href={product.image} target="_blank">
                     <img className="max-h-[300px] rounded mx-auto" 
                         src={product.image} 
-                        alt={product.name} 
+                        alt={product.title} 
                     />
                     </a>
                     <p className="mt-2 italic text-redish font-semibold">{product.rating.count} in stock!</p>

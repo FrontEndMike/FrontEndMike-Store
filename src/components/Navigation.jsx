@@ -1,6 +1,4 @@
 import React from "react";
-import { useEffect } from "react";
-import storeLogo from "../assets/store-logo.png";
 import { Link } from 'react-router-dom';
 
 const Navbar = ({ totalItems }) => {

@@ -15,12 +15,12 @@ const ProductRow = ({ category, products, addToCart }) => {
                 <Link className="text-center" to={`/product/${product.id}`}>
                   <img className="rounded mx-auto max-h-[250px] sm:max-w-[200px] sm:max-h-[170px]" 
                     src={product.image} 
-                    alt={product.name} 
+                    alt={product.title} 
                     />
                 </Link>
               </div>
               <div className="flex gap-1 my-4 sm:my-0 icon-parent flex-col">
-                <button className="w-auto cursor-pointer mt-2 px-4 py-2 bg-primary text-white rounded hover:brightness-90 transition duration-300" onClick={() => addToCart(product)}><i className="fa-solid fa-plus"></i></button>
+                <button className="w-auto cursor-pointer mt-2 px-4 py-2 bg-primary text-white rounded hover:brightness-90 transition duration-300" onClick={() => addToCart(product)}><i className="fa-solid fa-plus"><span className="sr-only">Add To Cart</span></i></button>
                 <Link to={`/product/${product.id}`}>
                   <button className="w-auto cursor-pointer mt-2 px-4 py-2 bg-tangerine text-white rounded hover:brightness-90 transition duration-300">
                     <i className="fa-solid fa-eye"><span className="sr-only">View Item</span>

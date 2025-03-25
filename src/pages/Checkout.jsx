@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom';
-import heroImage from "../assets/checkout-hero.png";
+import heroImage from "../assets/checkout-hero.webp";
 import Hero from '../components/Hero'
 import Loader from '../components/Loader'
 
