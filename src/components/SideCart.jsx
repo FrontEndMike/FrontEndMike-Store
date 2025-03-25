@@ -11,7 +11,7 @@ const SideCart = ({ cart, addToCart, removeFromCart, totalItems, totalPrice }) =
         <div id="sidecart" className="max-h-[80%] overflow-y-scroll slide-out right-0 rounded-2xl p-4 z-2 bg-white shadow-2xl md:max-w-md fixed top-24 w-full md:w-1/2 transform translate-x-full z-50" >
             <div className="flex justify-between items-center mb-4">
                 <p className="text-xl text-secondary font-semibold">Bag ({totalItems} items)</p>
-                <button onClick={() => slideOut()} className="text-xl cursor-pointer text-black px-2 py-1 transition-transform duration-300 hover:translate-x-1"><i className="fa-solid fa-arrow-right"></i></button>
+                <button onClick={() => slideOut()} className="text-xl cursor-pointer text-black px-2 py-1 transition-transform duration-300 hover:translate-x-1"><i className="fa-solid fa-arrow-right"><span className="sr-only">Hide Cart</span></i></button>
             </div>
         {cart.map((product) => (
         <div key={product.id} className="grid grid-cols-5">

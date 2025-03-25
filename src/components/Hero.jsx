@@ -26,7 +26,7 @@ const Hero = ({ heroImage, headline, subheadline, introText, buttons }) => {
                                 Show Now
                             </a>
 
-                            <a href="#" className="w-auto cursor-pointer mt-2 px-4 py-2 bg-tangerine text-white rounded hover:brightness-90 transition duration-300">
+                            <a href="#" className="w-auto cursor-pointer mt-2 px-4 py-2 bg-tangerine text-black rounded hover:brightness-90 transition duration-300">
                                 Live demo
                             </a>
                         </div>

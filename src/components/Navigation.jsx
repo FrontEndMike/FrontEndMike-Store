@@ -34,7 +34,7 @@ const Navbar = ({ totalItems }) => {
 
                         <div className="relative inline-block flex gap-4">
                         <button className="cursor-pointer" onClick={() => slideIn()}>
-                            <i className="text-secondary fas fa-shopping-bag"><span className="sr-only">Shopping Bag</span></i>
+                            <i className="text-secondary fas fa-shopping-bag"><span className="sr-only">View Cart</span></i>
                             {totalItems > 0 && (
                             <span id="cart-count"
                                     className="absolute -bottom-1 -right-1 z-1 bg-primary text-white text-xs font-semibold rounded-full w-5 h-5 flex items-center justify-center">

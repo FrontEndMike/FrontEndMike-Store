@@ -22,7 +22,7 @@ const ProductRow = ({ category, products, addToCart }) => {
               <div className="flex gap-1 my-4 sm:my-0 icon-parent flex-col">
                 <button className="w-auto cursor-pointer mt-2 px-4 py-2 bg-primary text-white rounded hover:brightness-90 transition duration-300" onClick={() => addToCart(product)}><i className="fa-solid fa-plus"><span className="sr-only">Add To Cart</span></i></button>
                 <Link to={`/product/${product.id}`}>
-                  <button className="w-auto cursor-pointer mt-2 px-4 py-2 bg-tangerine text-white rounded hover:brightness-90 transition duration-300">
+                  <button className="w-auto cursor-pointer mt-2 px-4 py-2 bg-tangerine text-black rounded hover:brightness-90 transition duration-300">
                     <i className="fa-solid fa-eye"><span className="sr-only">View Item</span>
                     </i></button>
                 </Link>
