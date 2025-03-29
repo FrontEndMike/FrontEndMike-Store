@@ -1,5 +1,5 @@
 import React from "react";
-import heroImage from "../assets/category-hero.png";
+import heroImage from "../assets/category-hero.webp";
 import Hero from '../components/Hero'
 import Loader from '../components/Loader'
 import { Link } from 'react-router-dom';
