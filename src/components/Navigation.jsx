@@ -28,7 +28,7 @@ const Navbar = ({ totalItems }) => {
                 <div id="header-content" className="min-h-[55px] max-w-[1280px] mx-auto flex items-center justify-between transition-transform duration-300 transform">
                     <div>
                         <Link to="/">
-                            <i className="text-secondary fa-solid fa-shop"><span className="sr-only">Home</span></i>
+                            <img src="src/assets/ecommerce-logo.webp" alt="store logo" />
                         </Link>
                     </div>
 

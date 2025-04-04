@@ -1,10 +1,9 @@
 import React from "react";
-import axios from 'axios';
 import Hero from '../components/Hero'
 import heroImage from "../assets/home-hero.webp";
 import Loader from '../components/Loader'
 import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+
 
 const ProductDetail = ({ products, addToCart }) => {
   const { id } = useParams();
