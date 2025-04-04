@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom';
+import logo from "../assets/ecommerce-logo.webp"
 
 const Navbar = ({ totalItems }) => {
       window.addEventListener('scroll', () => {
@@ -28,7 +29,7 @@ const Navbar = ({ totalItems }) => {
                 <div id="header-content" className="min-h-[55px] max-w-[1280px] mx-auto flex items-center justify-between transition-transform duration-300 transform">
                     <div>
                         <Link to="/">
-                            <img src="src/assets/ecommerce-logo.webp" alt="store logo" />
+                            <img src={logo} alt="store logo" />
                         </Link>
                     </div>
 
