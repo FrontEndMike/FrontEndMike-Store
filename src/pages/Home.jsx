@@ -3,7 +3,7 @@ import Hero from '../components/Hero'
 import ProductRow from '../components/ProductRow'
 import heroImage from "../assets/category-hero.webp";
 
-const HomePage = ({ products, addToCart }) => {
+const HomePage = ({ products }) => {
     const headline = "Fashion Boutique";
     const subheadline = "React Store";
     const introText = "Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.";
@@ -20,7 +20,6 @@ const HomePage = ({ products, addToCart }) => {
             <div id="content">
             <ProductRow 
                 products={products.slice(0, 12)}
-                addToCart={addToCart}
             />
             </div>
         </div>  

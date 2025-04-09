@@ -1,7 +1,10 @@
 import React from "react";
 import { Link } from 'react-router-dom';
+import { useCartActions, useCartState } from "../context/CartContext";
 
-const SideCart = ({ cart, addToCart, removeFromCart, totalItems, totalPrice }) => {
+const SideCart = () => {
+    const { addToCart, removeFromCart } = useCartActions();
+    const { cart, totalPrice, totalItems } = useCartState();
     const slideOut = () => {
         const cartModal = document.getElementById("sidecart");
         cartModal.classList.add('slide-out','right-0');

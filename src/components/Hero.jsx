@@ -38,5 +38,5 @@ const Hero = ({ heroImage, headline, subheadline, introText, buttons }) => {
     )
 }
 
-export default Hero;
+export default React.memo(Hero);
 

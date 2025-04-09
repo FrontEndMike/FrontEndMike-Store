@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import logo from "../assets/ecommerce-logo.webp"
+import { useCartState } from '../context/CartContext';
 
-const Navbar = ({ totalItems }) => {
+const Navbar = () => {
+    const { totalItems } = useCartState();
       window.addEventListener('scroll', () => {
         const headerContent = document.getElementById('header-content');
             if (window.scrollY > 10) {

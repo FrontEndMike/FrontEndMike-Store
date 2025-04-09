@@ -3,10 +3,11 @@ import Hero from '../components/Hero'
 import heroImage from "../assets/home-hero.webp";
 import Loader from '../components/Loader'
 import { useParams } from 'react-router-dom';
+import { useCartActions } from "../context/CartContext";
 
-
-const ProductDetail = ({ products, addToCart }) => {
+const ProductDetail = ({ products }) => {
   const { id } = useParams();
+  const { addToCart } = useCartActions();
   const product = products.find((item) => item.id === parseInt(id));
     const headline = "Fashion Boutique";
     const subheadline = "React Store";
@@ -52,4 +53,4 @@ const ProductDetail = ({ products, addToCart }) => {
   );
 };
 
-export default ProductDetail;
+export default React.memo(ProductDetail);

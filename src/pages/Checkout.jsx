@@ -3,8 +3,11 @@ import { Link } from 'react-router-dom';
 import heroImage from "../assets/checkout-hero.webp";
 import Hero from '../components/Hero'
 import Loader from '../components/Loader'
+import { useCartActions, useCartState } from "../context/CartContext";
 
-const CheckOut = ({ cart, addToCart, removeFromCart, totalPrice }) => {
+const CheckOut = () => {
+    const { addToCart, removeFromCart } = useCartActions();
+    const { cart, totalPrice } = useCartState();
     const headline = "Checkout";
     const subheadline = "React Store";
     const introText = "Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.";
