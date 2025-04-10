@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from 'react-router-dom';
 import { useCartActions } from '../context/CartContext';
 
 const SingleProduct = ({product}) => {
     const { addToCart } = useCartActions();
+    console.log("🔄 Re-rendered:", product.id);
+
+    useEffect(() => {
+  console.log("addToCart function changed");
+}, [addToCart]);
+
+
+
     return( 
     <>
         <div className="product relative relative mb-8">
@@ -35,4 +43,17 @@ const SingleProduct = ({product}) => {
     )
 }
 
-export default React.memo(SingleProduct);
+function areEqual(prevProps, nextProps) {
+  const prev = prevProps.product;
+  const next = nextProps.product;
+
+  return (
+    prev.id === next.id &&
+    prev.title === next.title &&
+    prev.price === next.price &&
+    prev.image === next.image
+  );
+}
+
+
+export default React.memo(SingleProduct, areEqual);
