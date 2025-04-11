@@ -1,6 +1,7 @@
 # Frontendmike Store
 
 This is an e-commerce web app using react, vite and tailwind.
+[View the Store](https://frontendmike-store.netlify.app/)
 
 - [FakeStoreAPI](https://fakestoreapi.com/)
 - Node version v18.20.4
