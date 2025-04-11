@@ -12,6 +12,10 @@ export default function useCart() {
       return [];
     }
   });
+  
+  const [isCartActive, setIsCartActive] = useState(false);
+
+  const toggleCart = () => setIsCartActive(prev => !prev);
 
   useEffect(() => {
     localStorage.setItem(CART_KEY, JSON.stringify(cart));
@@ -62,12 +66,14 @@ export default function useCart() {
     [cart]
   );
 
-  // ✅ MEMOIZE THE RETURN OBJECT
+  // MEMOIZE THE RETURN OBJECT
   return useMemo(() => ({
     cart,
     addToCart,
     removeFromCart,
     totalItems,
     totalPrice,
-  }), [cart, addToCart, removeFromCart, totalItems, totalPrice]);
+    isCartActive,
+    toggleCart
+  }), [cart, addToCart, removeFromCart, totalItems, totalPrice, isCartActive]);
 }

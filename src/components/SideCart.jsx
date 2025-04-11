@@ -1,17 +1,24 @@
 import React from "react";
 import { Link } from 'react-router-dom';
-import { useCartActions, useCartState } from "../context/CartContext";
+import { useCartActions, useCartState } from "../context/useCartHook";
 
 const SideCart = () => {
     const { addToCart, removeFromCart } = useCartActions();
-    const { cart, totalPrice, totalItems } = useCartState();
+    const { cart, totalPrice, totalItems, isCartActive, toggleCart } = useCartState();
+
     const slideOut = () => {
         const cartModal = document.getElementById("sidecart");
         cartModal.classList.add('slide-out','right-0');
          cartModal.classList.remove('slide-in','right-4');
+         toggleCart();
     }
+
+    if(!isCartActive) return null;
+
     return(
-        <div id="sidecart" className="max-h-[80%] overflow-y-scroll slide-out right-0 rounded-2xl p-4 z-2 bg-white shadow-2xl md:max-w-md fixed top-24 w-full md:w-1/2 transform translate-x-full z-50" >
+        <div id="sidecart" className={`transition-all duration-500 ease-in-out fixed top-24 z-50 w-[90%] md:w-1/2 max-h-[80%] overflow-y-scroll rounded-2xl p-4 bg-white shadow-2xl md:max-w-md
+        ${isCartActive ? 'translate-x-0 right-4' : 'translate-x-full right-0'}
+      `} >
             <div className="flex justify-between items-center mb-4">
                 <p className="text-xl text-secondary font-semibold">Bag ({totalItems} items)</p>
                 <button onClick={() => slideOut()} className="text-xl cursor-pointer text-black px-2 py-1 transition-transform duration-300 hover:translate-x-1"><i className="fa-solid fa-arrow-right"><span className="sr-only">Hide Cart</span></i></button>
@@ -23,7 +30,7 @@ const SideCart = () => {
                     <img className="mx-auto" src={product.image} alt={product.title} />
                 </Link>
             </div>
-            <div key={product.id} className="col-span-4 relative relative mb-8">
+            <div key={product.id} className="col-span-4 relative mb-8">
               <p className="my-1 text-secondary text-md md:text-lg/5">
                   <Link to={`/product/${product.id}`}>
                     {product.title}
