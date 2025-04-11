@@ -1,20 +1,24 @@
-import React, { useMemo } from "react";
-import Hero from "../components/Hero";
-import SingleProduct from "../components/SingleProduct";
-import heroImage from "../assets/category-hero.webp";
+import React, { useMemo } from 'react';
+import Hero from '../components/Hero';
+import SingleProduct from '../components/SingleProduct';
+import heroImage from '../assets/category-hero.webp';
+import useIsMobile from '../hooks/useMobile';
 
 const HomePage = ({ products }) => {
-  const headline = "Fashion Boutique";
-  const subheadline = "React Store";
+  const headline = 'Fashion Boutique';
+  const subheadline = 'React Store';
   const introText =
-    "Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.";
+    'Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.';
+  const isMobile = useIsMobile();
+
+  isMobile ? console.log('is mobile') : console.log('is not mobile');
 
   const productList = useMemo(() => {
-    console.log("⚡️ productList rebuilt");
-    return products.map((product) => (
-      <SingleProduct key={product.id} product={product} />
-    ));
-  }, [products]);
+    console.log('⚡️ productList rebuilt');
+    const visibleProducts = isMobile ? products.slice(0, 6) : products;
+
+    return visibleProducts.map((product) => <SingleProduct key={product.id} product={product} />);
+  }, [products, isMobile]);
 
   return (
     <>
