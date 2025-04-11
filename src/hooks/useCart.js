@@ -1,6 +1,6 @@
-import { useState, useEffect, useCallback, useMemo } from 'react';
+import { useState, useEffect, useCallback, useMemo } from "react";
 
-const CART_KEY = 'user-cart';
+const CART_KEY = "user-cart";
 
 export default function useCart() {
   const [cart, setCart] = useState(() => {
@@ -12,10 +12,10 @@ export default function useCart() {
       return [];
     }
   });
-  
+
   const [isCartActive, setIsCartActive] = useState(false);
 
-  const toggleCart = () => setIsCartActive(prev => !prev);
+  const toggleCart = () => setIsCartActive((prev) => !prev);
 
   useEffect(() => {
     localStorage.setItem(CART_KEY, JSON.stringify(cart));
@@ -32,7 +32,7 @@ export default function useCart() {
         return acc;
       }, []);
 
-      if (!prevCart.some(item => item.id === product.id)) {
+      if (!prevCart.some((item) => item.id === product.id)) {
         updatedCart.push({ ...product, quantity: 1 });
       }
 
@@ -52,28 +52,31 @@ export default function useCart() {
           acc.push(item);
         }
         return acc;
-      }, [])
+      }, []),
     );
   }, []);
 
-  const totalItems = useMemo(() =>
-    cart.reduce((sum, item) => sum + item.quantity, 0),
-    [cart]
+  const totalItems = useMemo(
+    () => cart.reduce((sum, item) => sum + item.quantity, 0),
+    [cart],
   );
 
-  const totalPrice = useMemo(() =>
-    cart.reduce((sum, item) => sum + item.price * item.quantity, 0),
-    [cart]
+  const totalPrice = useMemo(
+    () => cart.reduce((sum, item) => sum + item.price * item.quantity, 0),
+    [cart],
   );
 
   // MEMOIZE THE RETURN OBJECT
-  return useMemo(() => ({
-    cart,
-    addToCart,
-    removeFromCart,
-    totalItems,
-    totalPrice,
-    isCartActive,
-    toggleCart
-  }), [cart, addToCart, removeFromCart, totalItems, totalPrice, isCartActive]);
+  return useMemo(
+    () => ({
+      cart,
+      addToCart,
+      removeFromCart,
+      totalItems,
+      totalPrice,
+      isCartActive,
+      toggleCart,
+    }),
+    [cart, addToCart, removeFromCart, totalItems, totalPrice, isCartActive],
+  );
 }

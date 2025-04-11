@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
-.main-header{
-    @apply px-4 bg-white shadow-md fixed top-0 left-0 w-full z-50  transition-all duration-300 ease-in-out;
+.main-header {
+  @apply px-4 bg-white shadow-md fixed top-0 left-0 w-full z-50  transition-all duration-300 ease-in-out;
 }
 .skip-link {
   position: absolute;
@@ -25,29 +25,28 @@
   position: static;
 }
 
-#content{
-    scroll-padding-top: 140px;
+#content {
+  scroll-padding-top: 140px;
 }
-#header-content{
-    @apply py-4 px-4 transition-all duration-300 transform;
+#header-content {
+  @apply py-4 px-4 transition-all duration-300 transform;
 }
-#header-content.scroll{
-    @apply py-0;
-}
-
-#header-content img{
-    @apply max-w-[3.25rem] scale-100 text-4xl transition-transform duration-300 transform;
+#header-content.scroll {
+  @apply py-0;
 }
 
-#header-content.scroll img{
-    @apply scale-75;
+#header-content img {
+  @apply max-w-[3.25rem] scale-100 text-4xl transition-transform duration-300 transform;
 }
 
-
-#header-content i{
-    @apply scale-100 text-4xl transition-transform duration-300 transform;
+#header-content.scroll img {
+  @apply scale-75;
 }
 
-#header-content.scroll i{
-    @apply scale-75;
+#header-content i {
+  @apply scale-100 text-4xl transition-transform duration-300 transform;
+}
+
+#header-content.scroll i {
+  @apply scale-75;
 }

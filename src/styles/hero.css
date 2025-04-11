@@ -1,4 +1,4 @@
-.hero{
-    padding: 10.1rem 0;
-    @apply relative w-full flex items-center justify-start text-left bg-cover bg-center;
+.hero {
+  padding: 10.1rem 0;
+  @apply relative w-full flex items-center justify-start text-left bg-cover bg-center;
 }
