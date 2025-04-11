@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Link } from 'react-router-dom';
-import { useCartActions } from '../context/CartContext';
+import { useCartActions } from '../context/useCartHook';
 
 const SingleProduct = ({product}) => {
     const { addToCart } = useCartActions();
@@ -14,7 +14,7 @@ const SingleProduct = ({product}) => {
 
     return( 
     <>
-        <div className="product relative relative mb-8">
+        <div className="product relative mb-8">
             <div className="isolate relative image-parent p-4 rounded-lg border-solid border-primary justify-center ">
             <Link className="text-center" to={`/product/${product.id}`}>
                 <img className="rounded mx-auto max-h-[250px] sm:max-w-[200px] sm:max-h-[170px]" 

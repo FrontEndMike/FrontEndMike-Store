@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import logo from "../assets/ecommerce-logo.webp"
-import { useCartState } from '../context/CartContext';
+import { useCartState } from '../context/useCartHook';
 
 const Navbar = () => {
-    const { totalItems } = useCartState();
+    const { totalItems, toggleCart } = useCartState();
       window.addEventListener('scroll', () => {
         const headerContent = document.getElementById('header-content');
             if (window.scrollY > 10) {
@@ -13,16 +13,6 @@ const Navbar = () => {
                 headerContent.classList.remove('scroll');
             }
         });
-        const slideIn = () => {
-            const cartModal = document.getElementById("sidecart");
-            if(cartModal.classList.contains('slide-in')){
-                cartModal.classList.add('slide-out','right-0');
-                cartModal.classList.remove('slide-in','right-4');
-            } else {                
-                cartModal.classList.remove('slide-out', 'right-0');
-                cartModal.classList.add('slide-in','right-4');
-            }
-        }
 
         return(
             <>
@@ -35,8 +25,8 @@ const Navbar = () => {
                         </Link>
                     </div>
 
-                        <div className="relative inline-block flex gap-4">
-                        <button className="cursor-pointer" onClick={() => slideIn()}>
+                        <div className="relative flex gap-4">
+                        <button className="cursor-pointer" onClick={toggleCart}>
                             <i className="text-secondary fas fa-shopping-bag"><span className="sr-only">View Cart</span></i>
                             {totalItems > 0 && (
                             <span id="cart-count"

@@ -3,7 +3,7 @@ import Hero from '../components/Hero'
 import heroImage from "../assets/home-hero.webp";
 import Loader from '../components/Loader'
 import { useParams } from 'react-router-dom';
-import { useCartActions } from "../context/CartContext";
+import { useCartActions } from "../context/useCartHook";
 
 const ProductDetail = ({ products }) => {
   const { id } = useParams();

@@ -2,7 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import { CartProvider } from './context/CartContext.jsx';
+import CartProvider from './context/CartProvider.jsx';
 
 import queryClient from './react-query-client';
 import './index.css'

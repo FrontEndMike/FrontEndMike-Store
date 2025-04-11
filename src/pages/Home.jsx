@@ -2,21 +2,19 @@ import React, { useMemo } from "react";
 import Hero from '../components/Hero';
 import SingleProduct from "../components/SingleProduct";
 import heroImage from "../assets/category-hero.webp";
-import useDeepMemo from "../hooks/deepMemo";
 
 const HomePage = ({ products }) => {
   const headline = "Fashion Boutique";
   const subheadline = "React Store";
   const introText = "Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.";
 
-const stableProducts = useDeepMemo(products);
 
 const productList = useMemo(() => {
   console.log("⚡️ productList rebuilt");
-  return stableProducts.map(product => (
+  return products.map(product => (
     <SingleProduct key={product.id} product={product} />
   ));
-}, [stableProducts]);
+}, [products]);
 
 
 

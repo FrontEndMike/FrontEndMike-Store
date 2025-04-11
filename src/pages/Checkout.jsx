@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import heroImage from "../assets/checkout-hero.webp";
 import Hero from '../components/Hero'
 import Loader from '../components/Loader'
-import { useCartActions, useCartState } from "../context/CartContext";
+import { useCartActions, useCartState } from "../context/useCartHook";
 
 const CheckOut = () => {
     const { addToCart, removeFromCart } = useCartActions();
@@ -33,14 +33,14 @@ const CheckOut = () => {
             )}
  
             {cart.map((product) => (
-            <div className="px-8 bg-white ">
-                <div key={product.id} className="grid items-center grid-cols-5 border-b py-4  border-primary">
+            <div key={product.id} className="px-8 bg-white ">
+                <div className="grid items-center grid-cols-5 border-b py-4  border-primary">
                     <div className="col-span-1 cart-preview">
                         <Link to={`/product/${product.id}`}>
                             <img className="mx-auto" src={product.image} alt={product.title} />
                         </Link>
                     </div>
-                    <div key={product.id} className="col-span-4 relative relative">
+                    <div key={product.id} className="col-span-4 relative">
                     <p className="my-1 text-secondary text-md md:text-lg/5">
                         <Link to={`/product/${product.id}`}>
                             {product.title}
@@ -71,9 +71,9 @@ const CheckOut = () => {
             )}
             {cart.length > 0 && (
                 <div>
-                    <a href="#" className="flex items-center gap-2 justify-center text-xl mt-4 block p-3 text-center button bg-black text-white rounded hover:brightness-90 transition duration-300">Pay with <i class="fa-brands text-4xl fa-apple-pay"><span className="sr-only">Apple Pay</span></i></a>
-                    <a href="#" className="flex items-center gap-2 justify-center text-xl mt-4 block p-4 text-center button bg-[#0079C1] text-white rounded hover:brightness-90 transition duration-300">Pay with <i class="fa-brands fa-cc-paypal"></i><span className="sr-only">PayPal</span></a>
-                    <a href="#" className="flex items-center gap-2 justify-center text-xl mt-4 block p-4 text-center button bg-primary text-white rounded hover:brightness-90 transition duration-300">Pay with Credit/Debit <i class="fa-solid fa-credit-card"></i></a>
+                    <a href="#" className="flex items-center gap-2 justify-center text-xl mt-4 p-3 text-center button bg-black text-white rounded hover:brightness-90 transition duration-300">Pay with <i className="fa-brands text-4xl fa-apple-pay"><span className="sr-only">Apple Pay</span></i></a>
+                    <a href="#" className="flex items-center gap-2 justify-center text-xl mt-4 p-4 text-center button bg-[#0079C1] text-white rounded hover:brightness-90 transition duration-300">Pay with <i className="fa-brands fa-cc-paypal"></i><span className="sr-only">PayPal</span></a>
+                    <a href="#" className="flex items-center gap-2 justify-center text-xl mt-4 p-4 text-center button bg-primary text-white rounded hover:brightness-90 transition duration-300">Pay with Credit/Debit <i className="fa-solid fa-credit-card"></i></a>
                 </div>
                 )}
         </div>
