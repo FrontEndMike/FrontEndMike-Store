@@ -1,13 +1,13 @@
-import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
-import { useCartActions } from "../context/useCartHook";
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { useCartActions } from '../context/useCartHook';
 
 const SingleProduct = ({ product }) => {
   const { addToCart } = useCartActions();
-  console.log("🔄 Re-rendered:", product.id);
+  console.log('🔄 Re-rendered:', product.id);
 
   useEffect(() => {
-    console.log("addToCart function changed");
+    console.log('addToCart function changed');
   }, [addToCart]);
 
   return (
@@ -16,6 +16,7 @@ const SingleProduct = ({ product }) => {
         <div className="isolate relative image-parent p-4 rounded-lg border-solid border-primary justify-center ">
           <Link className="text-center" to={`/product/${product.id}`}>
             <img
+              loading="lazy"
               className="rounded mx-auto max-h-[250px] sm:max-w-[200px] sm:max-h-[170px]"
               src={product.image}
               alt={product.title}

@@ -1,22 +1,22 @@
-import React from "react";
+import React from 'react';
 
 const Hero = ({ heroImage, headline, subheadline, introText, buttons }) => {
   return (
-    <div
-      className="hero"
-      style={{
-        backgroundImage: `url(${heroImage})`,
-      }}
-    >
-      <div className="absolute top-0 right-0 bottom-0 left-0 bg-gray-900 opacity-75"></div>
+    <div className="hero">
+      <img
+        src={heroImage}
+        alt={headline}
+        className="absolute inset-0 w-full h-full object-cover -z-10"
+        fetchpriority="high"
+        decoding="async"
+      />
+      <div className="absolute inset-0 bg-gray-900 opacity-75 -z-10"></div>
 
       <div className="max-w-[1280px] mx-auto w-full z-2">
         <div className="px-4 text-left ">
           <h1 className="text-4xl leading-10 font-extrabold sm:text-5xl text-white sm:leading-none md:text-6xl">
             {headline}
-            {subheadline && (
-              <span className="text-tangerine block">{subheadline}</span>
-            )}
+            {subheadline && <span className="text-tangerine block">{subheadline}</span>}
           </h1>
           {introText && (
             <p className="mt-3 text-white sm:mt-5 sm:max-w-xl md:mt-5 text-lg font-light">
